@@ -4,10 +4,10 @@ import * as typescript from '@graphql-codegen/typescript'
 import * as typescriptOperations from '@graphql-codegen/typescript-operations'
 import { GraphQLFileLoader } from '@graphql-tools/graphql-file-loader'
 import { loadDocuments, loadSchema } from '@graphql-tools/load'
-import * as eventBus from '@resource/codegen'
 import { promises } from 'fs'
 import path from 'path'
 import prettier from 'prettier'
+import { Generator } from './plugin'
 
 const main = async () => {
   const loadedCDocuments = await loadDocuments(
@@ -49,7 +49,7 @@ const main = async () => {
     pluginMap: {
       typescript,
       typescriptOperations,
-      eventBus,
+      events: Generator,
     },
     plugins: [
       {
@@ -60,7 +60,7 @@ const main = async () => {
         typescriptOperations: {},
       },
       {
-        eventBus: {
+        Generator: {
           consumer: {
             eventSampler: true,
             schemaPrintPath: './src/types/publisher.graphql',
@@ -101,7 +101,7 @@ const main = async () => {
     pluginMap: {
       typescript,
       typescriptOperations,
-      eventBus,
+      Generator,
     },
     plugins: [
       {
@@ -112,7 +112,7 @@ const main = async () => {
         typescriptOperations: {},
       },
       {
-        eventBus: {
+        Generator: {
           publisher: true,
           scalars: {
             DateTime: 'String',
