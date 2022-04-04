@@ -1,0 +1,43 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Metadata {
+  id         String   @id @default(cuid())
+  email      String   @unique
+  verified   Boolean? @default(false)
+  address    String
+  publicKey  String   @unique
+  provider   String
+  identityId String   @unique
+  identity   Identity @relation(fields: [identityId], references: [id])
+}
+
+model Identity {
+  id        String   @id @default(cuid())
+  uuid      String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  metadata Metadata?
+}
+
+model Signature {
+  id        String @id @default(cuid())
+  publicKey String @unique
+  sig       String
+}
+
+model Proof {
+  id    String @id @default(cuid())
+  type  String
+  value String
+  uuid  String
+}
+
+

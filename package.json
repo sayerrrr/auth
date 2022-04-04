@@ -1,0 +1,27 @@
+{
+  "name": "@resource/rdk",
+  "version": "1.0.0",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "main": "packages/rdk",
+  "private": true,
+  "scripts": {
+    "build": "./scripts/turbo.sh build",
+    "dev": "turbo run dev --parallel",
+    "lint": "turbo run lint",
+    "lint:fix": "turbo run lint:fix",
+    "test": "turbo run test --parallel",
+    "typecheck": "turbo run typecheck"
+  },
+  "dependencies": {
+    "lerna": "^4.0.0",
+    "turbo": "latest"
+  },
+  "engines": {
+    "npm": ">=7.0.0",
+    "node": ">=14.0.0"
+  },
+  "packageManager": "yarn@1.22.17"
+}

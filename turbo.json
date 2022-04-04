@@ -1,0 +1,26 @@
+{
+  "pipeline": {
+    "swc": {},
+    "clean": {
+      "outputs": ["esm/**", "cjs/**"]
+    },
+    "build:esm": {
+      "outputs": ["esm/**"]
+    },
+    "build:cjs": {
+      "outputs": ["cjs/**"]
+    },
+    "build": {
+      "dependsOn": ["build:esm", "build:cjs"]
+    },
+    "test:once": {
+      "outputs": []
+    },
+    "dev": {
+      "cache": false
+    },
+    "start": {
+      "cache": false
+    }
+  }
+}

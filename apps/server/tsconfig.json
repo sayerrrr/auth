@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "sourceMap": true,
+    "outDir": "dist",
+    "strict": true,
+    "lib": ["esnext", "dom"],
+    "esModuleInterop": true,
+    "module": "commonjs",
+    "target": "es6",
+    "moduleResolution": "node",
+    "rootDir": "./",
+    "noImplicitAny": false,
+    "skipLibCheck": true
+  }
+}

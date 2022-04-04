@@ -1,0 +1,33 @@
+{
+  "name": "@resource/utils",
+  "version": "1.0.0",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "src/index.ts",
+  "scripts": {
+    "clean": "rimraf ./dist/*",
+    "build:esm": "swc ./src --sync -d dist/esm -C module.type=es6",
+    "build:cjs": "swc ./src --sync -d dist/cjs -C module.type=commonjs",
+    "lint": "eslint .",
+    "lint:fix": "yarn lint:fix"
+  },
+  "author": "ReSource",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^17.0.23",
+    "rimraf": "~3.0.2",
+    "typescript": "~4.6.0",
+    "esbuild": "^0.13.12",
+    "@swc/cli": "^0.1.57",
+    "@swc/core": "^1.2.163"
+  },
+  "dependencies": {
+    "@hapi/nes": "^12.0.4",
+    "@textile/crypto": "^4.2.1",
+    "@textile/hub": "^6.3.3",
+    "axios": "^0.26.1",
+    "sha3": "^2.1.4",
+    "tiny-invariant": "^1.2.0",
+    "uuid": "^8.3.2"
+  }
+}

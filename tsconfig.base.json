@@ -1,0 +1,18 @@
+{
+  "exclude": ["node_modules", "**/*/dist", "**/*.test.ts"],
+  "compilerOptions": {
+    "declaration": true,
+    "noEmit": true,
+    "baseUrl": ".",
+    "lib": ["es6", "dom", "esnext", "es2020"],
+    "module": "commonjs",
+    "target": "es2021",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "paths": {
+      "@resource/*": ["./packages/*"]
+    }
+  }
+}
