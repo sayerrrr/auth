@@ -1,0 +1,43 @@
+scalar DateTime
+
+scalar EmailAddress
+
+type EmailOpenEvent {
+  emailAddress: EmailAddress!
+  eventId: UUID!
+  openedAt: DateTime!
+}
+
+type Query {
+  EmailOpenEvent: EmailOpenEvent!
+  SendEmailEvent: SendEmailEvent!
+  UserCreatedEvent: UserCreatedEvent!
+  UserDeletedEvent: UserDeletedEvent!
+}
+
+type SendEmailEvent {
+  content: String!
+  emailAddress: EmailAddress!
+  eventId: UUID!
+}
+
+scalar UUID
+
+type UserCreatedEvent {
+  createdAt: DateTime!
+  eventId: UUID!
+  userEmail: EmailAddress
+  userId: ID!
+  userName: String
+  userType: UserType!
+}
+
+type UserDeletedEvent {
+  eventId: UUID!
+  userId: ID!
+}
+
+enum UserType {
+  ENTERPRISE
+  STARTUP
+}

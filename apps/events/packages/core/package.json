@@ -1,0 +1,55 @@
+{
+  "name": "graphql-eventbus",
+  "version": "0.1.7",
+  "description": "Eventbus powered by GraphQL",
+  "engines": {
+    "node": ">= 14 <17"
+  },
+  "homepage": "https://github.com/quant-daddy/graphql-eventbus",
+  "bugs": {
+    "url": "https://github.com/quant-daddy/graphql-eventbus/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/quant-daddy/graphql-eventbus.git"
+  },
+  "keywords": [
+    "graphql",
+    "graphql-eventbus",
+    "event"
+  ],
+  "_moduleAliases": {
+    "#root": "./dist"
+  },
+  "main": "dist/index.js",
+  "files": [
+    "dist/**/*"
+  ],
+  "types": "./dist/index.d.ts",
+  "np": {
+    "yarn": false,
+    "contents": "dist",
+    "cleanup": false
+  },
+  "devDependencies": {
+    "@graphql-tools/mock": "^8.4.3",
+    "@types/uuid": "^8.3.0",
+    "graphql-scalars": "^1.13.6"
+  },
+  "scripts": {
+    "build": "rimraf dist && tsc -p tsconfig.json",
+    "typecheck": "tsc --noEmit",
+    "test": "jest --runInBand --verbose --forceExit",
+    "test:watch": "jest --watch --runInBand",
+    "lint": "eslint . --ext .ts,.tsx"
+  },
+  "author": "Suraj Keshri",
+  "license": "MIT",
+  "dependencies": {
+    "@graphql-inspector/core": "^2.2.0",
+    "@graphql-tools/schema": "^7.1.5",
+    "module-alias": "^2.2.2",
+    "ts-is-present": "^1.2.2",
+    "uuid": "^8.3.2"
+  }
+}

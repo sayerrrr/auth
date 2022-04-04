@@ -1,0 +1,39 @@
+{
+  "name": "graphql-eventbus-metrics-plugin",
+  "version": "0.1.6",
+  "description": "Metrics for graphql eventbus",
+  "main": "dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist/**/*"
+  ],
+  "homepage": "https://github.com/quant-daddy/graphql-eventbus",
+  "bugs": {
+    "url": "https://github.com/quant-daddy/graphql-eventbus/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/quant-daddy/graphql-eventbus.git"
+  },
+  "keywords": [
+    "graphql",
+    "graphql-eventbus",
+    "graphql-codegen",
+    "prometheus"
+  ],
+  "scripts": {
+    "build": "rimraf dist && tsc -p tsconfig.build.json"
+  },
+  "dependencies": {
+    "graphql-eventbus": "^0.1.0",
+    "module-alias": "^2.2.2"
+  },
+  "author": "Suraj Keshri",
+  "license": "MIT",
+  "peerDependencies": {
+    "prom-client": "14.x"
+  },
+  "devDependencies": {
+    "prom-client": "^14.0.1"
+  }
+}
