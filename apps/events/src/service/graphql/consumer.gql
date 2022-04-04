@@ -1,0 +1,27 @@
+query ChallengeEvent {
+  SendChallengeEvent {
+    type
+    value
+  }
+}
+
+query SignatureEvent {
+  SendSignatureEvent {
+    type
+    payload {
+      sig
+      pubkey
+    }
+  }
+}
+
+query AuthEvent {
+  SendAuthEvent {
+    type
+    payload {
+      id
+      pubkey
+      version
+    }
+  }
+}

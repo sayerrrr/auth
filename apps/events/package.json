@@ -8,7 +8,8 @@
     "prettier": "prettier --ignore-path .gitignore --list-different --write \"**/*.{ts,tsx,graphql,yml}\"",
     "type:check": "tsc --noEmit",
     "prerelease": "npm run build",
-    "release": "changeset publish"
+    "release": "changeset publish",
+    "codegen": "tsnd src/scripts/codegen.ts"
   },
   "devDependencies": {
     "@changesets/cli": "^2.19.0",

@@ -1,6 +1,3 @@
-scalar UUID 
-scalar DateTime
-
 type Query {
   SendChallengeEvent: SendChallengeEvent!
   SendAuthEvent: SendAuthEvent!
@@ -8,25 +5,25 @@ type Query {
 }
 
 type SendChallengeEvent {
-  eventId: UUID!
+  eventId: String!
   type: String!
   value: String!
 }
 
 type SendSignatureEvent {
-  eventId: UUID!
+  eventId: String!
   type: String!
   payload: Signature!
 }
 
 type SendAuthEvent {
-  eventId: UUID!
+  eventId: String!
   type: String!
   payload: AuthData!
 }
 
 type AuthData {
-  id: UUID!
+  id: String!
   pubkey: String!
   version: Int!
 }
