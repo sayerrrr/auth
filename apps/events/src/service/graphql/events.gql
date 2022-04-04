@@ -1,0 +1,37 @@
+scalar UUID 
+scalar DateTime
+
+type Query {
+  SendChallengeEvent: SendChallengeEvent!
+  SendAuthEvent: SendAuthEvent!
+  SendSignatureEvent: SendSignatureEvent!
+}
+
+type SendChallengeEvent {
+  eventId: UUID!
+  type: String!
+  value: String!
+}
+
+type SendSignatureEvent {
+  eventId: UUID!
+  type: String!
+  payload: Signature!
+}
+
+type SendAuthEvent {
+  eventId: UUID!
+  type: String!
+  payload: AuthData!
+}
+
+type AuthData {
+  id: UUID!
+  pubkey: String!
+  version: Int!
+}
+
+type Signature {
+  sig: String!
+  pubkey: String!
+}

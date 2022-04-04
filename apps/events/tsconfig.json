@@ -1,30 +1,15 @@
 {
   "compilerOptions": {
-    "incremental": true,
-    "lib": ["es2018", "esnext"],
-    "target": "es2018",
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "allowSyntheticDefaultImports": true,
-    "allowJs": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "importHelpers": true,
-    "alwaysStrict": true,
-    "sourceMap": false,
+    "sourceMap": true,
+    "outDir": "dist",
     "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true,
+    "lib": ["esnext", "dom"],
     "esModuleInterop": true,
-    "typeRoots": ["./node_modules/@types", "./typings"],
-    "baseUrl": ".",
-    "declaration": true,
-    "skipLibCheck": true,
-    "paths": {
-      "graphql-eventbus": ["packages/core/src/index.ts"]
-    }
-  },
-  "include": ["packages/"],
-  "exclude": ["website/", "examples/"]
-  // "exclude": ["node_modules/", "packages/codegen/data/.output.ts"]
+    "module": "commonjs",
+    "target": "es6",
+    "moduleResolution": "node",
+    "rootDir": "./",
+    "noImplicitAny": false,
+    "skipLibCheck": true
+  }
 }

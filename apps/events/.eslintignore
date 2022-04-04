@@ -1,6 +1,0 @@
-/**/*.js
-*.test.ts
-dist/*
-**/build/*
-website/
-examples/

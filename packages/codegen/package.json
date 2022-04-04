@@ -1,0 +1,33 @@
+{
+  "name": "@resource/codegen",
+  "version": "1.0.0",
+  "description": "Codegen for eventbus",
+  "main": "dist/index.js",
+  "files": [
+    "dist/**/*"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts --dts",
+    "test": "jest --runInBand --verbose",
+    "test:watch": "jest --watch --runInBand",
+    "build:watch": "tsc -w -p tsconfig.json",
+    "lint": "eslint . --ext .ts,.tsx"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@graphql-codegen/plugin-helpers": "^2.3.1",
+    "@graphql-inspector/core": "^3.0.2"
+  },
+  "devDependencies": {
+    "@graphql-codegen/typescript": "^2.4.2",
+    "@graphql-codegen/typescript-operations": "^2.2.2"
+  },
+  "tsup": {
+    "entry": [
+      "src/index.ts"
+    ],
+    "splitting": false,
+    "sourcemap": true,
+    "clean": true
+  }
+}
