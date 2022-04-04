@@ -7,7 +7,7 @@
     "dist/**/*"
   ],
   "scripts": {
-    "build": "tsup-node src/index.ts --dts",
+    "build": "rimraf dist && tsc -p tsconfig.build.json",
     "test": "jest --runInBand --verbose",
     "test:watch": "jest --watch --runInBand",
     "build:watch": "tsc -w -p tsconfig.json",
@@ -20,8 +20,7 @@
   },
   "devDependencies": {
     "@graphql-codegen/typescript": "^2.4.2",
-    "@graphql-codegen/typescript-operations": "^2.2.2",
-    "tsup": "^5.12.4"
+    "@graphql-codegen/typescript-operations": "^2.2.2"
   },
   "tsup": {
     "entry": [

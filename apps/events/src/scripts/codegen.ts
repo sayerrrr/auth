@@ -4,10 +4,10 @@ import * as typescript from '@graphql-codegen/typescript'
 import * as typescriptOperations from '@graphql-codegen/typescript-operations'
 import { GraphQLFileLoader } from '@graphql-tools/graphql-file-loader'
 import { loadDocuments, loadSchema } from '@graphql-tools/load'
+import * as events from '@resource/codegen'
 import { promises } from 'fs'
 import path from 'path'
 import prettier from 'prettier'
-import { Generator } from './plugin'
 
 const main = async () => {
   const loadedCDocuments = await loadDocuments(
@@ -40,16 +40,19 @@ const main = async () => {
   const cDocumentNode = getCachedDocumentNodeFromSchema(loadedCSchema)
   const pDocumentNode = getCachedDocumentNodeFromSchema(loadedPSchema)
 
-  const cFilename = path.join(process.cwd(), '../types/event-consumer.ts')
+  const cFilename = path.join(
+    process.cwd(),
+    '../events/src/types/event-consumer.ts'
+  )
   const consumer = await codegen({
     schema: cDocumentNode,
     documents: loadedCDocuments,
     config: cConfig,
-    filename: cFilename,
+    filename: 'event-consumer.ts',
     pluginMap: {
       typescript,
       typescriptOperations,
-      events: Generator,
+      events,
     },
     plugins: [
       {
@@ -60,10 +63,11 @@ const main = async () => {
         typescriptOperations: {},
       },
       {
-        Generator: {
+        events: {
           consumer: {
             eventSampler: true,
             schemaPrintPath: './src/types/publisher.graphql',
+            contextType: './context#HandlerContext',
           },
           scalars: {
             DateTime: 'String',
@@ -78,7 +82,11 @@ const main = async () => {
   await promises.writeFile(
     cFilename,
     prettier.format(consumer, {
-      ...(await prettier.resolveConfig(process.cwd())),
+      semi: false,
+      singleQuote: true,
+      trailingComma: 'es5',
+      arrowParens: 'always',
+      printWidth: 80,
       parser: 'typescript',
     }),
     {
@@ -92,16 +100,20 @@ const main = async () => {
     useTypeImports: true,
     avoidOptionals: true,
   }
-  const pFilename = path.join(process.cwd(), '../types/event-producer.ts')
+  const pFilename = path.join(
+    process.cwd(),
+    '../events/src/types/event-producer.ts'
+  )
+
   const producer = await codegen({
     schema: pDocumentNode,
     documents: loadedCDocuments,
     config: pConfig,
-    filename: pFilename,
+    filename: 'event-producer.ts',
     pluginMap: {
       typescript,
       typescriptOperations,
-      Generator,
+      events,
     },
     plugins: [
       {
@@ -112,7 +124,7 @@ const main = async () => {
         typescriptOperations: {},
       },
       {
-        Generator: {
+        events: {
           publisher: true,
           scalars: {
             DateTime: 'String',
@@ -127,7 +139,11 @@ const main = async () => {
   await promises.writeFile(
     pFilename,
     prettier.format(producer, {
-      ...(await prettier.resolveConfig(process.cwd())),
+      semi: false,
+      singleQuote: true,
+      trailingComma: 'es5',
+      arrowParens: 'always',
+      printWidth: 80,
       parser: 'typescript',
     }),
     {

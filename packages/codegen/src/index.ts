@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Types } from '@graphql-codegen/plugin-helpers'
 import fs from 'fs'
 import {
@@ -97,9 +98,11 @@ export const plugin = (
       }
       return [selection.name.value, a.name.value]
     })
+
     const eventHandlers = returnTypes.map(([eventName, queryName]) => {
       return `${'  '}${eventName}: (msg: ${queryName}Query["${eventName}"], ctx: ${contextType}) => Promise<unknown>`
     })
+
     const enumsString = `export enum Events {\n${returnTypes
       .map((a) => `  ${a[0]} = "${a[0]}",`)
       .join('\n')}\n}`
@@ -107,5 +110,6 @@ export const plugin = (
       ',\n'
     )}\n}\n${enumsString}`
   }
+
   return exportString
 }

@@ -1,0 +1,34 @@
+type Query {
+  SendChallengeEvent: SendChallengeEvent!
+  SendAuthEvent: SendAuthEvent!
+  SendSignatureEvent: SendSignatureEvent!
+}
+
+type SendChallengeEvent {
+  eventId: String!
+  type: String!
+  value: String!
+}
+
+type SendSignatureEvent {
+  eventId: String!
+  type: String!
+  payload: Signature!
+}
+
+type SendAuthEvent {
+  eventId: String!
+  type: String!
+  payload: AuthData!
+}
+
+type AuthData {
+  id: String!
+  pubkey: String!
+  version: Int!
+}
+
+type Signature {
+  sig: String!
+  pubkey: String!
+}

@@ -3,32 +3,25 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "test": "jest --runInBand --verbose --forceExit",
-    "prettier": "prettier --ignore-path .gitignore --list-different --write \"**/*.{ts,tsx,graphql,yml}\"",
-    "release": "changeset publish",
-    "codegen": "tsnd src/scripts/codegen.ts"
+    "codegen": "tsup src/scripts/codegen.ts && node dist/codegen.js",
+    "prettier": "prettier --ignore-path .gitignore --list-different --write \"**/*.{ts,tsx,graphql,yml}\""
+  },
+  "dependencies": {
+    "@graphql-codegen/core": "*",
+    "@graphql-codegen/plugin-helpers": "*",
+    "@graphql-codegen/typed-document-node": "*",
+    "@graphql-codegen/typescript": "*",
+    "@graphql-codegen/typescript-operations": "*",
+    "@graphql-codegen/typescript-resolvers": "*",
+    "@graphql-tools/graphql-file-loader": "^7.0.1",
+    "@graphql-tools/load": "^7.3.0",
+    "@graphql-tools/schema": "^8.3.1",
+    "graphql": "^15.5.1",
+    "graphql-tag": "^2.12.5",
+    "prettier": "^2.3.2"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.19.0",
-    "@types/jest": "^27.4.0",
-    "@types/node": "^17.0.8",
-    "@typescript-eslint/eslint-plugin": "^5.10.0",
-    "@typescript-eslint/parser": "^5.10.0",
-    "eslint": "^8.7.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-jest": "^25.7.0",
-    "graphql-tag": "^2.12.6",
-    "jest": "^27.4.7",
-    "jest-watch-typeahead": "^0.6.5",
-    "lint-staged": "^12.2.1",
-    "nodemon": "^2.0.15",
-    "prettier": "^2.5.1",
-    "rimraf": "^3.0.2",
-    "ts-jest": "^27.1.3",
-    "ts-node": "^10.4.0",
-    "typescript": "^4.5.4",
-    "waait": "^1.0.5",
-    "wait-for-expect": "^3.0.2",
-    "@resource/codegen": "*"
+    "@types/node": "^16.4.10",
+    "tsup": "^4.12.5"
   }
 }
