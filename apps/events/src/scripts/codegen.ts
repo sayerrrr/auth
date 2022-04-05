@@ -35,6 +35,11 @@ const main = async () => {
     skipTypename: true,
     useTypeImports: true,
     avoidOptionals: true,
+    scalars: {
+      DateTime: 'String',
+      UUID: 'String',
+      EmailAddress: 'String',
+    },
   }
 
   const cDocumentNode = getCachedDocumentNodeFromSchema(loadedCSchema)
@@ -69,11 +74,6 @@ const main = async () => {
             schemaPrintPath: './src/types/publisher.graphql',
             contextType: './context#HandlerContext',
           },
-          scalars: {
-            DateTime: 'String',
-            UUID: 'String',
-            EmailAddress: 'String',
-          },
         },
       },
     ],
@@ -99,6 +99,11 @@ const main = async () => {
     skipTypename: true,
     useTypeImports: true,
     avoidOptionals: true,
+    scalars: {
+      DateTime: 'String',
+      UUID: 'String',
+      EmailAddress: 'String',
+    },
   }
   const pFilename = path.join(
     process.cwd(),
@@ -126,11 +131,6 @@ const main = async () => {
       {
         events: {
           publisher: true,
-          scalars: {
-            DateTime: 'String',
-            UUID: 'String',
-            EmailAddress: 'String',
-          },
         },
       },
     ],

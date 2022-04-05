@@ -4,7 +4,8 @@
   "version": "1.0.0",
   "scripts": {
     "codegen": "tsup src/scripts/codegen.ts && node dist/codegen.js",
-    "prettier": "prettier --ignore-path .gitignore --list-different --write \"**/*.{ts,tsx,graphql,yml}\""
+    "prettier": "prettier --ignore-path .gitignore --list-different --write \"**/*.{ts,tsx,graphql,yml}\"",
+    "dev":""
   },
   "dependencies": {
     "@graphql-codegen/core": "*",
@@ -17,6 +18,7 @@
     "@graphql-tools/load": "^7.3.0",
     "@graphql-tools/schema": "^8.3.1",
     "graphql": "^15.5.1",
+    "graphql-scalars": "^1.17.0",
     "graphql-tag": "^2.12.5",
     "prettier": "^2.3.2"
   },
